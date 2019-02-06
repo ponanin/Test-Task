@@ -1,0 +1,34 @@
+<div class="event-list event-list--empty" *ngIf="events.length == 0">
+    Извините, события отсутствуют. Вы можете добавить новое событие сверху.
+</div>
+<div class="event-list event-list--error" *ngIf="error">
+    {{error}}
+</div>
+<ng-container *ngIf="events.length > 0">
+    <div class="event-filter">
+
+        <div class="mat-select">
+            <div class="mat-select__wrap">
+                <select class="mat-select__el"
+                        [(ngModel)]="filter"
+                        (ngModelChange)="onFilterChange($event)"
+                >
+                    <option
+                            *ngFor="let variant of sortVariants"
+                            class="mat-select__item"
+                            [ngValue]="variant.type"
+                    >
+                        {{variant.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="event-list">
+        <app-event
+                *ngFor="let event of events"
+                [event]="event"
+                [routerLink]="'/event/' + event.id"
+        ></app-event>
+    </div>
+</ng-container>

@@ -1,0 +1,46 @@
+<div class="event-detailed" *ngIf="event">
+    <h4 class="event-detailed__type">
+        {{nameOfType}}
+    </h4>
+    <h4 *ngIf="error" class="event-detailed__type error">
+        {{error}}
+    </h4>
+    <ng-container *ngIf="isTransaction">
+
+        <dl class="event-detailed__list">
+            <dt [ngClass]="event.isPositive ? 'text-green' : 'text-pink'">{{event.isPositive ? 'Приход' : 'Расход'}}
+            </dt>
+            <dd></dd>
+            <dt>Сумма:</dt>
+            <dd>{{event.amount}}{{event.currency}}</dd>
+            <dt>От:</dt>
+            <dd>{{event.from}}</dd>
+            <dt>Дата:</dt>
+            <dd>{{event.date * 1000 | date:'dd/MM/yyyy'}}</dd>
+            <dt>Описание:</dt>
+            <dd>{{event.description}}</dd>
+        </dl>
+
+        <button class="mat-btn mat-btn--dark" type="submit"
+                (click)="remove()">Удалить
+        </button>
+
+    </ng-container>
+
+    <ng-container *ngIf="isNews">
+        <dl class="event-detailed__list">
+            <dt>Заголовок:</dt>
+            <dd>{{event.heading}}</dd>
+            <dt>Содержание:</dt>
+            <dd>{{event.content}}</dd>
+            <dt>Дата:</dt>
+            <dd>{{event.date * 1000 | date:'dd/MM/yyyy'}}</dd>
+        </dl>
+
+        <button *ngIf="!event.isSeen" class="mat-btn mat-btn--dark" type="submit"
+                (click)="see()">Ознакомлен
+        </button>
+
+    </ng-container>
+
+</div>

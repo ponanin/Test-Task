@@ -1,0 +1,24 @@
+@import '../../../assets/scss/blocks';
+@import '../../../assets/scss/var';
+
+.event {
+  background: $light-gray-color;
+  box-shadow: 1px 3px 10px 1px $gray-color;
+  padding: 9px 22px;
+  transition: .2s;
+  margin-top: 15px;
+  outline: 0;
+
+  &__type {
+    margin: 0 0 10px 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 3px 20px 1px $gray-color;
+  }
+
+  &--seen-news {
+    background: #e5f3d5;
+  }
+}

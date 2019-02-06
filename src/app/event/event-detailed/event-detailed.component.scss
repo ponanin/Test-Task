@@ -1,0 +1,25 @@
+@import '../../../assets/scss/blocks';
+
+.event-detailed {
+  margin: 90px auto;
+  background: $light-gray-color;
+  box-shadow: 1px 3px 10px 1px $gray-color;
+  padding: 9px 22px;
+  transition: .2s;
+  outline: 0;
+  max-width: 60%;
+  font-size: 20px;
+
+  @media (max-width: 600px) {
+    max-width: 80%;
+  }
+
+  &__type {
+    margin: 0 0 10px 0;
+  }
+
+  &__list {
+    word-break: break-all;
+  }
+
+}

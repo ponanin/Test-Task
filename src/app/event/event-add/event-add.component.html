@@ -1,0 +1,107 @@
+<button
+        class="header__btn mat-btn mat-btn--light"
+        (click)="showPopup($event); clearForm()"
+>
+    Добавить событие
+</button>
+
+<div class="overlay"
+     [ngClass]="{ 'overlay--active': isVisiblePopup }"
+     (click)="closeHandler()">
+</div>
+
+<div class="form-event-add" [@popupVisibilityChange]="isVisiblePopup?'opened':'closed'">
+    <div class="form-event-add__heading">
+        <h4 class="form-event-add__title">Добавление события</h4>
+
+        <a class="form-event-add__close-btn" (click)="closeHandler()">X</a>
+    </div>
+
+
+    <div class="form-event-add__wrapper">
+        <form class="form-event-add__form" [formGroup]="form">
+
+            <div class="mat-select">
+                <label class="mat-select__label">Тип события</label>
+                <div class="mat-select__wrap">
+                    <select class="mat-select__el"
+                            tabindex="1" formControlName="type"
+                    >
+                        <option
+                                *ngFor="let eventType of typesNaming"
+                                class="select__item"
+                                [value]="eventType.value"
+                        >
+                            {{eventType.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div formGroupName="Transaction" *ngIf="isTransactionForm">
+                <div class="mat-form-group">
+                    <div class="mat-input">
+                        <label for="amount_field" class="mat-input__label">Сумма (может быть отрицательна)</label>
+                        <input id="amount_field" class="mat-input__el" tabindex="2" formControlName="amount"
+                               type="number">
+
+                    </div>
+
+                    <div class="mat-select mat-select--no-w">
+                        <div class="mat-select__wrap">
+                            <select class="mat-select__el"
+                                    tabindex="3" formControlName="currency"
+                            >
+                                <option
+                                        *ngFor="let currency of currencies"
+                                        class="select__item"
+                                        [value]="currency"
+                                >
+                                    {{currency}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mat-input">
+                    <label for="from_field" class="mat-input__label">От кого</label>
+                    <input id="from_field" class="mat-input__el" tabindex="4" formControlName="from"
+                           type="text">
+                </div>
+
+                <div class="mat-input">
+                    <label for="description_field" class="mat-input__label">Описание</label>
+                    <textarea id="description_field" class="mat-input__el mat-input__el--area" tabindex="5"
+                              formControlName="description"
+                    ></textarea>
+                </div>
+            </div>
+
+            <div formGroupName="News" *ngIf="isNewsForm">
+                <div class="mat-input">
+                    <label for="heading_field" class="mat-input__label">Заголовок</label>
+                    <input id="heading_field" class="mat-input__el" tabindex="2" formControlName="heading"
+                           type="text">
+                </div>
+
+                <div class="mat-input">
+                    <label for="content_field" class="mat-input__label">Описание</label>
+                    <textarea id="content_field" class="mat-input__el mat-input__el--area" tabindex="3"
+                              formControlName="content"
+                    ></textarea>
+                </div>
+
+            </div>
+            <div class="form-event-add__btn">
+                <button class="mat-btn mat-btn--dark"
+                        tabindex="6" type="submit"
+                        [disabled]="form.controls[activeForm] && form.controls[activeForm].invalid"
+                        (click)="add()">Добавить
+                </button>
+                <button class="mat-btn mat-btn--light"
+                        (click)="closeHandler()">Отмена
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

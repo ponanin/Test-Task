@@ -1,0 +1,20 @@
+<div class="event" [ngClass]="{'event--seen-news' : isNews && event.isSeen}">
+    <h4 class="event__type">
+        {{nameOfType}}
+    </h4>
+    <ng-container *ngIf="isTransaction">
+        <span class="event__heading">
+            <span [ngClass]="event.isPositive ? 'text-green' : 'text-pink'">
+                {{event.isPositive ? 'Приход +' : 'Расход -'}}
+            </span>
+            {{amount}}{{event.currency}}
+            от {{event.from}} {{event.date * 1000 | date:'dd/MM/yyyy'}}
+        </span>
+    </ng-container>
+
+    <ng-container *ngIf="isNews">
+        <span class="event__heading">
+            {{event.heading}}
+        </span>
+    </ng-container>
+</div>
