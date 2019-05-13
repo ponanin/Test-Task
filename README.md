@@ -1,58 +1,55 @@
-# Тестовое задание
+# Test Task
 
-# Задание было выполнено с помощью фреймворка Angular 6
-## Использованные технологии:
+# The task was completed with Angular 6
+## Stack
 - Typescript
 - Scss
 - IndexedDB
-## Запуск приложения
 
-Ввести `ng serve`. Перейти по адресу `http://localhost:4200/`. 
+## Notes
+- Since the task did not specify the preferred method of data storage, it was decided to use IndexedDB.
+  Also, it is possible to write a simple rest crud server on node.js or php.
+- IE/Edge not supported
 
-## Замечания
-- Так как в задании не был указан желаемый способ хранения данных было решено использовать IndexedDB.
-С тем же успехом можно было написать несложный rest crud сервер на node.js или php.
-- IE/Edge не поддерживаются
-### Список возможных доработок
-- Универсальная обработка ошибок и их вывод, к примеру, с помощью какого-либо notification service
-- Для поддержания концепции переписать работу с БД на Observable
-- Вывод модальных окон с помощью сервиса
+### List of possible improves
+- Universal error handling and output them via some notification service
+- Work with IndexedDB using rxjs
+- Modal/Dialog service
 
-## Описание задания
+## Description
 
-# Написать *Angular* приложение
+# Develop *Angular* app
 
-## Таймлайн событий
+## Event timeline
 
-Это список событий разных типов, с возможностью сортировки по дате и типу события.
+This is a list of events of different types, with the ability to sort by date and type of event.
 
-Реализовать добавление событий в список и отображение этого списка. Для финансовой транзакции реализовать возможность удаления из списка, для новости возможность отметить, что с новостью ознакомились.
+Implement adding events to the list and displaying this list. For a financial transaction realize the ability to remove from the list, for the news the possibility to mark that we have read the news.
 
-### Финансовая транзакция:
-- Сумма транзакции
-- Валюта
-- От кого транзакция
-- Описание
-- Приход или расход
-- Дата
-- Тип события
+### Financial transaction:
+- Sum
+- Currency
+- Source
+- Description
+- Income or expense
+- Date
+- Type
 
-> У финансовой транзакции в списке отображаем приход или расход (выделить цветом и знаком +-), сумму, валюта, дата, и от кого транкзация.
+> The financial transaction in the list displays the income or expense (highlighted with a color and a + - sign), amount, currency, date, and source of the transaction.
+  
+> When clicking on an event, we open detailed information, either go to a separate route within your application, or open it nicely on the same page where there is a description and a “Delete” button.
 
-> При клике на событие открываем подробную информацию, либо переход на отдельный роут в рамках вашего приложения, либо красиво открыть на той же странице, где есть описание и кнопка “Удалить”.
+### News:
+- Title
+- Content
+- Date
+- Type
 
-### Новость:
-- Заголовок новости
-- Содержание новости
-- Дата
-- Тип события
+> The news in the list displays only the title.
 
-> У новости в списке отображаем только заголовок.
-> При клике на событие открываем подробную вкладку, где есть описание и кнопка “Ознакомлен”, после того, как нажали “Ознакомлен”, выделить цветом.
+> When clicking on an event, open the detailed tab, where there is a description and the “Acquainted” button, after clicking “Acquainted”, highlight with color.
 
+# Required:
+- Do not use third-party technologies
 
-# Обязательно:
-- Верстка без фреймворков
-- github/bitbucket или любой репозиторий, который мы сможем склонировать и посмотреть
-
-### Проект должен быть поддерживаемым и расширяемым. Например, если придется добавить еще одно событие, чтобы не пришлось переписывать весь код для добавления нового события.
+### The project must be supported and extensible. For example, if you have to add another event so that you do not have to rewrite all the code to add a new event.
